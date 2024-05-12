@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
-    idUser : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "User is required"]
-    },
     title: {
         type: String,
         required: [true, "Title is required"]
@@ -14,9 +9,9 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: [true, "Content is required"]
     },
-    image: {
-        data: Buffer,
-        contentType: String
+    date: {
+        type: Date,
+        default: Date.now
     },
     state: {
         type: Boolean,

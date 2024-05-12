@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import { conectarDB } from './mongo.js';
 import apiLimiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js';
+import postRoutes from '../src/post/post.routes.js';
 
 class Server {
     constructor() {
@@ -14,6 +15,7 @@ class Server {
         this.port = process.env.PORT;
 
         this.authPath = '/blogCool/v1/auth';
+        this.postPath = '/blogCool/v1/post';
 
         this.middlewares();
         this.conectarDB();
@@ -34,6 +36,7 @@ class Server {
 
     routes() {
         this.app.use(this.authPath, authRoutes);
+        this.app.use(this.postPath, postRoutes);
     }
 
     listen() {

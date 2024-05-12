@@ -32,7 +32,7 @@ export const login = async (req, res) => {
         flag = true;
     } else {
         if (bycrypt.compareSync(password, user.password)) {
-            
+
             const token = await generarJWT(user.id, user.email);
 
             console.log(user, user.admin);
@@ -58,5 +58,4 @@ export const login = async (req, res) => {
             msg:"Email or password are incorrect"
         });
     }
-
 }
