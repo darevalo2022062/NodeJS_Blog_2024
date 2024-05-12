@@ -34,8 +34,6 @@ export const login = async (req, res) => {
         if (bycrypt.compareSync(password, user.password)) {
 
             const token = await generarJWT(user.id, user.email);
-
-            console.log(user, user.admin);
             user.admin ? admin = true : admin = false;
 
             res.status(200).json({
