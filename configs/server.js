@@ -8,6 +8,7 @@ import { conectarDB } from './mongo.js';
 import apiLimiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js';
 import postRoutes from '../src/post/post.routes.js';
+import commentRoutes from '../src/comments/comment.routes.js';
 
 class Server {
     constructor() {
@@ -16,6 +17,7 @@ class Server {
 
         this.authPath = '/blogCool/v1/auth';
         this.postPath = '/blogCool/v1/post';
+        this.commentPath = '/blogCool/v1/comment';
 
         this.middlewares();
         this.conectarDB();
@@ -37,6 +39,7 @@ class Server {
     routes() {
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.postPath, postRoutes);
+        this.app.use(this.commentPath, commentRoutes);
     }
 
     listen() {

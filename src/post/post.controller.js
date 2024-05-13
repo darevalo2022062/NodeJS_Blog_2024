@@ -14,9 +14,15 @@ export const createPost = async (req = request, res = response) => {
 export const getPosts = async (req, res) => {
     const posts = await Post.find();
     res.status(200).json({
-        userDetails: {
-            posts
-        }
+        posts
+    });
+}
+
+export const getPostById = async (req, res) => {
+    const { idPost } = req.params;
+    const post = await Post.findById(idPost);
+    res.status(200).json({
+        post
     });
 }
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createPost, getPosts, serchNamePost } from "./post.controller.js";
+import { createPost, getPosts, serchNamePost, getPostById } from "./post.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 
@@ -18,6 +18,14 @@ router.post(
 router.get(
     '/getPosts',
     getPosts)
+
+router.get(
+    '/getPostById/:idPost',
+    [
+        check('idPost', 'Id is required').not().isEmpty(),
+        validarCampos
+    ],
+    getPostById)
 
 router.post(
     '/serchNamePost',
