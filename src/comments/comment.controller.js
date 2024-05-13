@@ -1,10 +1,14 @@
 import { response, request } from "express";
 import Comment from "./comment.model.js";
+import User from "../user/user.model.js";
 
 export const createComment = async (req = request, res = response) => {
     const { postId, content } = req.body;
     const { userId } = req.params;
-    const comment = new Comment({ postId, userId, content });
+    console.log(userId)
+    const { username } = await User.findById(userId);
+    let name = username;
+    const comment = new Comment({ postId,name, userId, content });
     await comment.save();
     res.status(201).json({
         msg: "Comment created"
