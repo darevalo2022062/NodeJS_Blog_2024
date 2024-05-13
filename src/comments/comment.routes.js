@@ -7,7 +7,7 @@ import { createComment, getCommentsForPost } from "./comment.controller.js";
 const router = Router();
 
 router.post(
-    '/createComment/:userId',
+    '/createComment',
     [
         validarJWT,
         check('content', 'Comment is required').not().isEmpty(),
