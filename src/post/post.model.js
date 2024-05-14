@@ -13,6 +13,10 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    imageData: {
+        type: Buffer,
+        required: false
+    },
     state: {
         type: Boolean,
         default: true
