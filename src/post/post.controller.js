@@ -3,8 +3,8 @@ import Post from "./post.model.js";
 import { ContextBuilder } from "express-validator/src/context-builder.js";
 
 export const createPost = async (req = request, res = response) => {
-    const { title, content } = req.body;
-    const post = new Post({ title, content });
+    const { title, content, imageData } = req.body;
+    const post = new Post({ title, content, imageData });
     await post.save();
     res.status(201).json({
         msg: "Post created"

@@ -14,8 +14,8 @@ const PostSchema = new mongoose.Schema({
         default: Date.now
     },
     imageData: {
-        type: Buffer,
-        required: false
+        data: Buffer,
+        contentType: String
     },
     state: {
         type: Boolean,
