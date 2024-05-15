@@ -13,9 +13,9 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    imageData: {
-        data: Buffer,
-        contentType: String
+    gitLink: {
+        type: String,
+        default: null
     },
     state: {
         type: Boolean,

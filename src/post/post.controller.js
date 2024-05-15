@@ -3,8 +3,8 @@ import Post from "./post.model.js";
 import { ContextBuilder } from "express-validator/src/context-builder.js";
 
 export const createPost = async (req = request, res = response) => {
-    const { title, content, imageData } = req.body;
-    const post = new Post({ title, content, imageData });
+    const { title, content, gitLink } = req.body;
+    const post = new Post({ title, content, gitLink });
     await post.save();
     res.status(201).json({
         msg: "Post created"
@@ -24,6 +24,15 @@ export const getPostById = async (req, res) => {
     res.status(200).json({
         post
     });
+}
+
+export const deletePost = async (req, res) => {
+    const { idPost } = req.params;
+    await Post.findByIdAndDelete(idPost);
+    res.status(200).json({
+        msg: "Post deleted"
+    });
+
 }
 
 export const serchNamePost = async (req, res) => {
